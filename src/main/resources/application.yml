@@ -1,4 +1,4 @@
 kafka:
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: 35.192.20.0:9092
   topic:
-    helloworld: test
+    leitura: leitura_teste_lucas

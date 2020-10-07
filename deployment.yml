@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafkatest
+  namespace: qa
+  labels:
+    app: kafkatest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kafkatest
+  template:
+    metadata:
+      labels:
+        app: kafkatest
+    spec:
+      containers:
+        - name: kafkatest
+          image: lucassantoss/kafkateste:2.0
+          lifecycle:
+            postStart:
+              exec:
+                command: ['sh', '-c', 'echo "35.192.20.0 db-kibana.us-central1-a.c.totemic-vine-257319.internal" >> /etc/hosts']
+          ports:
+            - containerPort: 8080
